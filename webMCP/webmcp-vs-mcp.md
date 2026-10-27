@@ -1,6 +1,7 @@
 # WebMCP and MCP compared
 
-**Status:** draft for comment, October 2026
+**Status:** draft for comment, October 2026 at TPAC
+
 **Comments and questions:** please open an issue or add a review comment against any section. Section and row labels are there so comments can point to them.
 
 This note compares the browser-side WebMCP proposal with the server-side Model Context Protocol (MCP), sets out the benefits and risks of each approach, and lists open questions where development could patch weaknesses on one side using strengths of the other.
