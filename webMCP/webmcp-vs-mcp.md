@@ -3,7 +3,7 @@
 **Status:** draft for comment, October 2026  (scribbled at TPAC during the related session 27 Oct 2026
 Web & AI Interest Group
 
-**Comments and questions:** please open an issue or add a review comment against any section. Section and row labels are there so comments can point to them.
+**Comments and questions:** This is a draft, aimed at sharing understanding about the intent behind WebMCP    please open an issue or add a review comment against any section if something needs to be corrected or clarified.  Section and row labels are there so comments can point to them.
 
 This note explains what WebMCP is for relative to MCP, compares the browser-side WebMCP proposal with the server-side Model Context Protocol (MCP), sets out the benefits and risks of each approach, and lists open questions where development could patch weaknesses on one side using strengths of the other.
 
