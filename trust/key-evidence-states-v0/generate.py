@@ -79,8 +79,10 @@ def main() -> None:
         "timestampAuthority": {"kid": "tsa-1", "publicKey": pub("tsa-1")},
         "stalenessBound": "PT24H",
         "onUnknown": "hold",
+        "lineageComplete": True,
     }
     write(FIX / "policy.json", policy)
+    write(FIX / "policy-open.json", {**policy, "lineageComplete": False})
 
     lineage = timestamped(sign({
         "type": "lineage", "identifier": IDENTIFIER,
@@ -151,11 +153,14 @@ def main() -> None:
          "s-current", lookup("no-status", fresh)),
         ("C10", "Old key, signing time only self-asserted (no timestamp token)",
          "s-old-untimed", lookup("complete", fresh)),
+        ("C11", "As C05, under a policy that does not assume the source publishes all lineage",
+         "s-successor", lookup("complete", fresh), "policy-open.json"),
     ]
-    for cid, desc, stmt, lk in cases:
+    for cid, desc, stmt, lk, *pol in cases:
         write(FIX / "cases" / f"{cid}.json",
               {"id": cid, "situation": desc, "evaluationInstant": eval_at,
-               "policy": "policy.json", "statement": f"statements/{stmt}.json", "lookup": lk})
+               "policy": pol[0] if pol else "policy.json",
+               "statement": f"statements/{stmt}.json", "lookup": lk})
 
     files = sorted(p for p in FIX.rglob("*.json"))
     lines = [f"{hashlib.sha256(p.read_bytes()).hexdigest()}  {p.relative_to(HERE).as_posix()}"

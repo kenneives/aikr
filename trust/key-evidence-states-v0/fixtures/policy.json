@@ -6,6 +6,7 @@
     "validUntil": "2026-04-01T00:00:00Z"
   },
   "identifier": "urn:example:subject-a",
+  "lineageComplete": true,
   "onUnknown": "hold",
   "stalenessBound": "PT24H",
   "timestampAuthority": {

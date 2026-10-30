@@ -9,7 +9,8 @@
     "C07": {"result": "fail", "decision": "refuse", "reason": "KEY_REVOKED"},
     "C08": {"result": "could-not-determine", "decision": "hold", "reason": "SOURCE_UNAVAILABLE"},
     "C09": {"result": "could-not-determine", "decision": "hold", "reason": "NO_STATUS_SOURCE"},
-    "C10": {"result": "could-not-determine", "decision": "hold", "reason": "SIGNING_TIME_UNATTESTED"}
+    "C10": {"result": "could-not-determine", "decision": "hold", "reason": "SIGNING_TIME_UNATTESTED"},
+    "C11": {"result": "could-not-determine", "decision": "hold", "reason": "LINEAGE_NOT_ESTABLISHED"}
   },
   "mutations": {
     "M01": {"base": "C01", "result": "fail", "decision": "refuse", "reason": "BAD_SIGNATURE"},

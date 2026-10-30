@@ -130,7 +130,11 @@ def evaluate(inp: dict) -> tuple[str, str, list[tuple[str, str, str]]]:
         links = [x for x in history["lineage"] if x["payload"]["successor"] == kid
                  and x["payload"]["identifier"] == policy["identifier"]]
         if not links:
-            raise Outcome(FAIL, "NO_LINEAGE")
+            # Absence is a definite no only if the policy says the source publishes all
+            # lineage; otherwise a handover may exist elsewhere, so continuity is open.
+            if policy.get("lineageComplete"):
+                raise Outcome(FAIL, "NO_LINEAGE")
+            raise Outcome(CND, "LINEAGE_NOT_ESTABLISHED")
         link = links[0]
         pred_kid = link["payload"]["predecessor"]
         pred = resolve(pred_kid, depth + 1)
